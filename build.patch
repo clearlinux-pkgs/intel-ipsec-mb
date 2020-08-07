@@ -1,5 +1,6 @@
---- intel-ipsec-mb-0.52/Makefile~	2018-12-03 11:58:25.000000000 +0000
-+++ intel-ipsec-mb-0.52/Makefile	2019-10-23 14:37:05.362655871 +0000
+diff -ru intel-ipsec-mb-0.54~/Makefile intel-ipsec-mb-0.54/Makefile
+--- intel-ipsec-mb-0.54~/Makefile	2020-04-14 10:13:02.000000000 -0700
++++ intel-ipsec-mb-0.54/Makefile	2020-08-07 15:07:57.359339304 -0700
 @@ -39,7 +39,7 @@
  SO_VERSION = $(shell echo $(VERSION) | cut -d. -f1)
  
@@ -9,14 +10,14 @@
  HDR_DIR ?= $(PREFIX)/include
  MAN_DIR ?= $(PREFIX)/man/man7
  MAN1 = libipsec-mb.7
-@@ -304,13 +304,13 @@
+@@ -538,15 +538,15 @@
  
  .PHONY: install
- install: $(LIBNAME)
+ install: $(LIB_DIR)/$(LIBNAME)
 -	install -d $(HDR_DIR)
 -	install -m 0644 $(IMB_HDR) $(HDR_DIR)
 -	install -d $(LIB_INSTALL_DIR)
--	install -s -m $(LIBPERM) $(LIBNAME) $(LIB_INSTALL_DIR)
+-	install -s -m $(LIBPERM) $(LIB_DIR)/$(LIBNAME) $(LIB_INSTALL_DIR)
 -	install -d $(MAN_DIR)
 -	install -m 0444 $(MAN1) $(MAN_DIR)
 -	install -m 0444 $(MAN2) $(MAN_DIR)
@@ -28,28 +29,8 @@
 +	install -m 0444 $(MAN1) $(DESTDIR)$(MAN_DIR)
 +	install -m 0444 $(MAN2) $(DESTDIR)$(MAN_DIR)
  ifeq ($(SHARED),y)
- 	cd $(LIB_INSTALL_DIR); \
- 		ln -f -s $(LIB).so.$(VERSION) $(LIB).so.$(SO_VERSION); \
---- intel-ipsec-mb-0.52/Makefile~	2019-10-23 14:37:05.000000000 +0000
-+++ intel-ipsec-mb-0.52/Makefile	2019-10-23 14:38:42.712654515 +0000
-@@ -312,7 +312,7 @@
- 	install -m 0444 $(MAN1) $(DESTDIR)$(MAN_DIR)
- 	install -m 0444 $(MAN2) $(DESTDIR)$(MAN_DIR)
- ifeq ($(SHARED),y)
 -	cd $(LIB_INSTALL_DIR); \
 +	cd $(DESTDIR)$(LIB_INSTALL_DIR); \
  		ln -f -s $(LIB).so.$(VERSION) $(LIB).so.$(SO_VERSION); \
  		ln -f -s $(LIB).so.$(SO_VERSION) $(LIB).so
  ifneq ($(NOLDCONFIG),y)
---- intel-ipsec-mb-0.52/Makefile~	2019-10-23 14:38:42.000000000 +0000
-+++ intel-ipsec-mb-0.52/Makefile	2019-10-23 14:41:11.883652438 +0000
-@@ -315,9 +315,6 @@
- 	cd $(DESTDIR)$(LIB_INSTALL_DIR); \
- 		ln -f -s $(LIB).so.$(VERSION) $(LIB).so.$(SO_VERSION); \
- 		ln -f -s $(LIB).so.$(SO_VERSION) $(LIB).so
--ifneq ($(NOLDCONFIG),y)
--	ldconfig
--endif
- endif
- 
- .PHONY: uninstall
