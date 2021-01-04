@@ -1,7 +1,8 @@
-diff -ru intel-ipsec-mb-0.54~/Makefile intel-ipsec-mb-0.54/Makefile
---- intel-ipsec-mb-0.54~/Makefile	2020-04-14 10:13:02.000000000 -0700
-+++ intel-ipsec-mb-0.54/Makefile	2020-08-07 15:07:57.359339304 -0700
-@@ -39,7 +39,7 @@
+diff --git a/lib/Makefile b/lib/Makefile
+index 3831172..b31da8f 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -39,7 +39,7 @@ VERSION = $(shell echo $(IMB_VERSION) | cut -d. -f1-3)
  SO_VERSION = $(shell echo $(VERSION) | cut -d. -f1)
  
  PREFIX ?= /usr
@@ -10,7 +11,7 @@ diff -ru intel-ipsec-mb-0.54~/Makefile intel-ipsec-mb-0.54/Makefile
  HDR_DIR ?= $(PREFIX)/include
  MAN_DIR ?= $(PREFIX)/man/man7
  MAN1 = libipsec-mb.7
-@@ -538,15 +538,15 @@
+@@ -619,15 +619,15 @@ endif
  
  .PHONY: install
  install: $(LIB_DIR)/$(LIBNAME)
