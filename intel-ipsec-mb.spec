@@ -4,7 +4,7 @@
 #
 Name     : intel-ipsec-mb
 Version  : 0.55
-Release  : 4
+Release  : 5
 URL      : https://github.com/intel/intel-ipsec-mb/archive/v0.55/intel-ipsec-mb-0.55.tar.gz
 Source0  : https://github.com/intel/intel-ipsec-mb/archive/v0.55/intel-ipsec-mb-0.55.tar.gz
 Summary  : IPSEC cryptography library optimized for Intel Architecture
@@ -56,7 +56,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1609784473
+export SOURCE_DATE_EPOCH=1616775391
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -65,11 +65,11 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
-make  %{?_smp_mflags}
+make  %{?_smp_mflags}  SAFE_DATA=y SAFE_PARAM=y SAFE_LOOKUP=y
 
 
 %install
-export SOURCE_DATE_EPOCH=1609784473
+export SOURCE_DATE_EPOCH=1616775391
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/intel-ipsec-mb
 cp %{_builddir}/intel-ipsec-mb-0.55/LICENSE %{buildroot}/usr/share/package-licenses/intel-ipsec-mb/d9c9a05743f068dbdc67225fe4ecb29a21b2b657
