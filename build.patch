@@ -1,37 +1,37 @@
-diff --git a/lib/Makefile b/lib/Makefile
-index 3831172..b31da8f 100644
---- a/lib/Makefile
-+++ b/lib/Makefile
-@@ -39,7 +39,7 @@ VERSION = $(shell echo $(IMB_VERSION) | cut -d. -f1-3)
- SO_VERSION = $(shell echo $(VERSION) | cut -d. -f1)
- 
- PREFIX ?= /usr
--LIB_INSTALL_DIR ?= $(PREFIX)/lib
-+LIB_INSTALL_DIR ?= $(PREFIX)/lib64
- HDR_DIR ?= $(PREFIX)/include
- MAN_DIR ?= $(PREFIX)/man/man7
- MAN1 = libipsec-mb.7
-@@ -619,15 +619,15 @@ endif
+--- intel-ipsec-mb-1.0/lib/Makefile~	2021-04-26 08:40:49.000000000 +0000
++++ intel-ipsec-mb-1.0/lib/Makefile	2021-05-19 16:41:37.135744620 +0000
+@@ -643,24 +643,24 @@
  
  .PHONY: install
  install: $(LIB_DIR)/$(LIBNAME)
 -	install -d $(HDR_DIR)
 -	install -m 0644 $(IMB_HDR) $(HDR_DIR)
--	install -d $(LIB_INSTALL_DIR)
--	install -s -m $(LIBPERM) $(LIB_DIR)/$(LIBNAME) $(LIB_INSTALL_DIR)
 -	install -d $(MAN_DIR)
 -	install -m 0444 $(MAN1) $(MAN_DIR)
 -	install -m 0444 $(MAN2) $(MAN_DIR)
+-	install -d $(LIB_INSTALL_DIR)
 +	install -d $(DESTDIR)$(HDR_DIR)
 +	install -m 0644 $(IMB_HDR) $(DESTDIR)$(HDR_DIR)
-+	install -d $(DESTDIR)$(LIB_INSTALL_DIR)
-+	install -s -m $(LIBPERM) $(LIBNAME) $(DESTDIR)$(LIB_INSTALL_DIR)
 +	install -d $(DESTDIR)$(MAN_DIR)
 +	install -m 0444 $(MAN1) $(DESTDIR)$(MAN_DIR)
 +	install -m 0444 $(MAN2) $(DESTDIR)$(MAN_DIR)
++	install -d $(DESTDIR)$(LIB_INSTALL_DIR)
+ ifeq ($(SHARED),y)
+-	install -s -m $(LIBPERM) $(LIB_DIR)/$(LIBNAME) $(LIB_INSTALL_DIR)
++	install -s -m $(LIBPERM) $(LIB_DIR)/$(LIBNAME) $(DESTDIR)$(LIB_INSTALL_DIR)
+ else
+ 	# must not strip symbol table for static libs
+-	install -m $(LIBPERM) $(LIB_DIR)/$(LIBNAME) $(LIB_INSTALL_DIR)
++	install -m $(LIBPERM) $(LIB_DIR)/$(LIBNAME) $(DESTDIR)$(LIB_INSTALL_DIR)
+ endif
  ifeq ($(SHARED),y)
 -	cd $(LIB_INSTALL_DIR); \
 +	cd $(DESTDIR)$(LIB_INSTALL_DIR); \
  		ln -f -s $(LIB).so.$(VERSION) $(LIB).so.$(SO_VERSION); \
  		ln -f -s $(LIB).so.$(SO_VERSION) $(LIB).so
  ifneq ($(NOLDCONFIG),y)
+-	ldconfig
++#	ldconfig
+ endif
+ endif
+ 
