@@ -4,14 +4,14 @@
 #
 Name     : intel-ipsec-mb
 Version  : 1.0
-Release  : 6
+Release  : 7
 URL      : https://github.com/intel/intel-ipsec-mb/archive/v1.0/intel-ipsec-mb-1.0.tar.gz
 Source0  : https://github.com/intel/intel-ipsec-mb/archive/v1.0/intel-ipsec-mb-1.0.tar.gz
 Summary  : IPSEC cryptography library optimized for Intel Architecture
 Group    : Development/Tools
 License  : BSD-3-Clause
+Requires: intel-ipsec-mb-lib = %{version}-%{release}
 Requires: intel-ipsec-mb-license = %{version}-%{release}
-Requires: intel-ipsec-mb-plugins = %{version}-%{release}
 BuildRequires : nasm-bin
 Patch1: build.patch
 
@@ -21,11 +21,21 @@ IPSEC cryptography library optimized for Intel Architecture
 %package dev
 Summary: dev components for the intel-ipsec-mb package.
 Group: Development
+Requires: intel-ipsec-mb-lib = %{version}-%{release}
 Provides: intel-ipsec-mb-devel = %{version}-%{release}
 Requires: intel-ipsec-mb = %{version}-%{release}
 
 %description dev
 dev components for the intel-ipsec-mb package.
+
+
+%package lib
+Summary: lib components for the intel-ipsec-mb package.
+Group: Libraries
+Requires: intel-ipsec-mb-license = %{version}-%{release}
+
+%description lib
+lib components for the intel-ipsec-mb package.
 
 
 %package license
@@ -34,14 +44,6 @@ Group: Default
 
 %description license
 license components for the intel-ipsec-mb package.
-
-
-%package plugins
-Summary: plugins components for the intel-ipsec-mb package.
-Group: Default
-
-%description plugins
-plugins components for the intel-ipsec-mb package.
 
 
 %prep
@@ -54,7 +56,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621443034
+export SOURCE_DATE_EPOCH=1621530457
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -63,15 +65,15 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
-make  %{?_smp_mflags}  SAFE_DATA=y SAFE_PARAM=y SAFE_LOOKUP=y
+make  %{?_smp_mflags}  SAFE_DATA=y SAFE_PARAM=y SAFE_LOOKUP=y LIB_INSTALL_DIR=/usr/lib64
 
 
 %install
-export SOURCE_DATE_EPOCH=1621443034
+export SOURCE_DATE_EPOCH=1621530457
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/intel-ipsec-mb
 cp %{_builddir}/intel-ipsec-mb-1.0/LICENSE %{buildroot}/usr/share/package-licenses/intel-ipsec-mb/b51944973a7f37c4854ba991232a28810eead8bd
-%make_install NOLDCONFIG=y
+%make_install NOLDCONFIG=y LIB_INSTALL_DIR=/usr/lib64
 
 %files
 %defattr(-,root,root,-)
@@ -81,13 +83,13 @@ cp %{_builddir}/intel-ipsec-mb-1.0/LICENSE %{buildroot}/usr/share/package-licens
 %files dev
 %defattr(-,root,root,-)
 /usr/include/intel-ipsec-mb.h
-/usr/lib/libIPSec_MB.so
+/usr/lib64/libIPSec_MB.so
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/libIPSec_MB.so.1
+/usr/lib64/libIPSec_MB.so.1.0.0
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/intel-ipsec-mb/b51944973a7f37c4854ba991232a28810eead8bd
-
-%files plugins
-%defattr(-,root,root,-)
-/usr/lib/libIPSec_MB.so.1
-/usr/lib/libIPSec_MB.so.1.0.0
