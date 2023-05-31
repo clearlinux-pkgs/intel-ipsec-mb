@@ -5,7 +5,7 @@
 #
 Name     : intel-ipsec-mb
 Version  : 1.3
-Release  : 12
+Release  : 13
 URL      : https://github.com/intel/intel-ipsec-mb/archive/v1.3/intel-ipsec-mb-1.3.tar.gz
 Source0  : https://github.com/intel/intel-ipsec-mb/archive/v1.3/intel-ipsec-mb-1.3.tar.gz
 Summary  : IPSEC cryptography library optimized for Intel Architecture
@@ -68,7 +68,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682988597
+export SOURCE_DATE_EPOCH=1685556081
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -97,7 +97,7 @@ make  %{?_smp_mflags}  SAFE_DATA=y SAFE_PARAM=y SAFE_LOOKUP=y LIB_INSTALL_DIR=/u
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682988597
+export SOURCE_DATE_EPOCH=1685556081
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/intel-ipsec-mb
 cp %{_builddir}/intel-ipsec-mb-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/intel-ipsec-mb/499ba59c96dc3a1d9bf25928c35248c272799edf || :
@@ -118,16 +118,12 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libIPSec_MB.so
-/V4/usr/lib64/libIPSec_MB.so
 /usr/include/intel-ipsec-mb.h
 /usr/lib64/libIPSec_MB.so
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libIPSec_MB.so.1
 /V3/usr/lib64/libIPSec_MB.so.1.3.0
-/V4/usr/lib64/libIPSec_MB.so.1
 /V4/usr/lib64/libIPSec_MB.so.1.3.0
 /usr/lib64/libIPSec_MB.so.1
 /usr/lib64/libIPSec_MB.so.1.3.0
