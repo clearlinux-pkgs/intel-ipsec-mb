@@ -5,12 +5,13 @@
 #
 Name     : intel-ipsec-mb
 Version  : 1.4
-Release  : 14
+Release  : 15
 URL      : https://github.com/intel/intel-ipsec-mb/archive/v1.4/intel-ipsec-mb-1.4.tar.gz
 Source0  : https://github.com/intel/intel-ipsec-mb/archive/v1.4/intel-ipsec-mb-1.4.tar.gz
 Summary  : IPSEC cryptography library optimized for Intel Architecture
 Group    : Development/Tools
 License  : BSD-3-Clause
+Requires: intel-ipsec-mb-lib = %{version}-%{release}
 Requires: intel-ipsec-mb-license = %{version}-%{release}
 Requires: intel-ipsec-mb-plugins = %{version}-%{release}
 BuildRequires : buildreq-cmake
@@ -28,11 +29,21 @@ IPSEC cryptography library optimized for Intel Architecture
 %package dev
 Summary: dev components for the intel-ipsec-mb package.
 Group: Development
+Requires: intel-ipsec-mb-lib = %{version}-%{release}
 Provides: intel-ipsec-mb-devel = %{version}-%{release}
 Requires: intel-ipsec-mb = %{version}-%{release}
 
 %description dev
 dev components for the intel-ipsec-mb package.
+
+
+%package lib
+Summary: lib components for the intel-ipsec-mb package.
+Group: Libraries
+Requires: intel-ipsec-mb-license = %{version}-%{release}
+
+%description lib
+lib components for the intel-ipsec-mb package.
 
 
 %package license
@@ -61,7 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686853718
+export SOURCE_DATE_EPOCH=1686875381
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -111,7 +122,7 @@ make  %{?_smp_mflags}  SAFE_DATA=y SAFE_PARAM=y SAFE_LOOKUP=y LIB_INSTALL_DIR=/u
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1686853718
+export SOURCE_DATE_EPOCH=1686875381
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/intel-ipsec-mb
 cp %{_builddir}/intel-ipsec-mb-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/intel-ipsec-mb/39a580dee5b6c1f66b7a255a7dfde5219b19d985 || :
@@ -124,6 +135,12 @@ popd
 pushd clr-build
 %make_install NOLDCONFIG=y LIB_INSTALL_DIR=/usr/lib64
 popd
+## install_append content
+mkdir -p %{buildroot}/usr/lib64
+mkdir -p %{buildroot}/V3/usr/lib64
+mv %{buildroot}/usr/lib/* %{buildroot}/usr/lib64
+#mv %{buildroot}/V3/usr/lib/* %{buildroot}/V3/usr/lib64
+## install_append end
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 /usr/bin/elf-move.py avx512 %{buildroot}-v4 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
@@ -134,7 +151,12 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/lib/libIPSec_MB.so
+/usr/lib64/libIPSec_MB.so
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/libIPSec_MB.so.1
+/usr/lib64/libIPSec_MB.so.1.4.0
 
 %files license
 %defattr(0644,root,root,0755)
@@ -144,5 +166,3 @@ popd
 %defattr(-,root,root,-)
 /V3/usr/lib/libIPSec_MB.so.1.4.0
 /V4/usr/lib/libIPSec_MB.so.1.4.0
-/usr/lib/libIPSec_MB.so.1
-/usr/lib/libIPSec_MB.so.1.4.0

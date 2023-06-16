@@ -1,0 +1,4 @@
+mkdir -p %{buildroot}/usr/lib64
+mkdir -p %{buildroot}/V3/usr/lib64
+mv %{buildroot}/usr/lib/* %{buildroot}/usr/lib64
+#mv %{buildroot}/V3/usr/lib/* %{buildroot}/V3/usr/lib64
