@@ -234,10 +234,12 @@ libIPSec_MB.so.1:ethernet_fcs_sse
 libIPSec_MB.so.1:finalize_chacha20_poly1305_avx
 libIPSec_MB.so.1:finalize_chacha20_poly1305_avx2
 libIPSec_MB.so.1:finalize_chacha20_poly1305_avx512
+libIPSec_MB.so.1:finalize_chacha20_poly1305_fma_avx2
 libIPSec_MB.so.1:finalize_chacha20_poly1305_fma_avx512
 libIPSec_MB.so.1:finalize_chacha20_poly1305_sse
 libIPSec_MB.so.1:flush_burst_avx2_t1
 libIPSec_MB.so.1:flush_burst_avx2_t2
+libIPSec_MB.so.1:flush_burst_avx2_t3
 libIPSec_MB.so.1:flush_burst_avx512_t1
 libIPSec_MB.so.1:flush_burst_avx512_t2
 libIPSec_MB.so.1:flush_burst_avx_t1
@@ -249,6 +251,7 @@ libIPSec_MB.so.1:flush_job_avx
 libIPSec_MB.so.1:flush_job_avx2
 libIPSec_MB.so.1:flush_job_avx2_t1
 libIPSec_MB.so.1:flush_job_avx2_t2
+libIPSec_MB.so.1:flush_job_avx2_t3
 libIPSec_MB.so.1:flush_job_avx512
 libIPSec_MB.so.1:flush_job_avx512_t1
 libIPSec_MB.so.1:flush_job_avx512_t2
@@ -263,6 +266,7 @@ libIPSec_MB.so.1:get_completed_job_avx
 libIPSec_MB.so.1:get_completed_job_avx2
 libIPSec_MB.so.1:get_completed_job_avx2_t1
 libIPSec_MB.so.1:get_completed_job_avx2_t2
+libIPSec_MB.so.1:get_completed_job_avx2_t3
 libIPSec_MB.so.1:get_completed_job_avx512
 libIPSec_MB.so.1:get_completed_job_avx512_t1
 libIPSec_MB.so.1:get_completed_job_avx512_t2
@@ -274,6 +278,7 @@ libIPSec_MB.so.1:get_completed_job_sse_t2
 libIPSec_MB.so.1:get_completed_job_sse_t3
 libIPSec_MB.so.1:get_next_burst_avx2_t1
 libIPSec_MB.so.1:get_next_burst_avx2_t2
+libIPSec_MB.so.1:get_next_burst_avx2_t3
 libIPSec_MB.so.1:get_next_burst_avx512_t1
 libIPSec_MB.so.1:get_next_burst_avx512_t2
 libIPSec_MB.so.1:get_next_burst_avx_t1
@@ -285,6 +290,7 @@ libIPSec_MB.so.1:get_next_job_avx
 libIPSec_MB.so.1:get_next_job_avx2
 libIPSec_MB.so.1:get_next_job_avx2_t1
 libIPSec_MB.so.1:get_next_job_avx2_t2
+libIPSec_MB.so.1:get_next_job_avx2_t3
 libIPSec_MB.so.1:get_next_job_avx512
 libIPSec_MB.so.1:get_next_job_avx512_t1
 libIPSec_MB.so.1:get_next_job_avx512_t2
@@ -402,6 +408,7 @@ libIPSec_MB.so.1:queue_size_avx
 libIPSec_MB.so.1:queue_size_avx2
 libIPSec_MB.so.1:queue_size_avx2_t1
 libIPSec_MB.so.1:queue_size_avx2_t2
+libIPSec_MB.so.1:queue_size_avx2_t3
 libIPSec_MB.so.1:queue_size_avx512
 libIPSec_MB.so.1:queue_size_avx512_t1
 libIPSec_MB.so.1:queue_size_avx512_t2
@@ -413,6 +420,7 @@ libIPSec_MB.so.1:queue_size_sse_t2
 libIPSec_MB.so.1:queue_size_sse_t3
 libIPSec_MB.so.1:set_suite_id_avx2_t1
 libIPSec_MB.so.1:set_suite_id_avx2_t2
+libIPSec_MB.so.1:set_suite_id_avx2_t3
 libIPSec_MB.so.1:set_suite_id_avx512_t1
 libIPSec_MB.so.1:set_suite_id_avx512_t2
 libIPSec_MB.so.1:set_suite_id_avx_t1
@@ -519,12 +527,14 @@ libIPSec_MB.so.1:snow_v_avx
 libIPSec_MB.so.1:snow_v_sse
 libIPSec_MB.so.1:submit_burst_avx2_t1
 libIPSec_MB.so.1:submit_burst_avx2_t2
+libIPSec_MB.so.1:submit_burst_avx2_t3
 libIPSec_MB.so.1:submit_burst_avx512_t1
 libIPSec_MB.so.1:submit_burst_avx512_t2
 libIPSec_MB.so.1:submit_burst_avx_t1
 libIPSec_MB.so.1:submit_burst_avx_t2
 libIPSec_MB.so.1:submit_burst_nocheck_avx2_t1
 libIPSec_MB.so.1:submit_burst_nocheck_avx2_t2
+libIPSec_MB.so.1:submit_burst_nocheck_avx2_t3
 libIPSec_MB.so.1:submit_burst_nocheck_avx512_t1
 libIPSec_MB.so.1:submit_burst_nocheck_avx512_t2
 libIPSec_MB.so.1:submit_burst_nocheck_avx_t1
@@ -537,12 +547,14 @@ libIPSec_MB.so.1:submit_burst_sse_t2
 libIPSec_MB.so.1:submit_burst_sse_t3
 libIPSec_MB.so.1:submit_cipher_burst_avx2_t1
 libIPSec_MB.so.1:submit_cipher_burst_avx2_t2
+libIPSec_MB.so.1:submit_cipher_burst_avx2_t3
 libIPSec_MB.so.1:submit_cipher_burst_avx512_t1
 libIPSec_MB.so.1:submit_cipher_burst_avx512_t2
 libIPSec_MB.so.1:submit_cipher_burst_avx_t1
 libIPSec_MB.so.1:submit_cipher_burst_avx_t2
 libIPSec_MB.so.1:submit_cipher_burst_nocheck_avx2_t1
 libIPSec_MB.so.1:submit_cipher_burst_nocheck_avx2_t2
+libIPSec_MB.so.1:submit_cipher_burst_nocheck_avx2_t3
 libIPSec_MB.so.1:submit_cipher_burst_nocheck_avx512_t1
 libIPSec_MB.so.1:submit_cipher_burst_nocheck_avx512_t2
 libIPSec_MB.so.1:submit_cipher_burst_nocheck_avx_t1
@@ -555,12 +567,14 @@ libIPSec_MB.so.1:submit_cipher_burst_sse_t2
 libIPSec_MB.so.1:submit_cipher_burst_sse_t3
 libIPSec_MB.so.1:submit_hash_burst_avx2_t1
 libIPSec_MB.so.1:submit_hash_burst_avx2_t2
+libIPSec_MB.so.1:submit_hash_burst_avx2_t3
 libIPSec_MB.so.1:submit_hash_burst_avx512_t1
 libIPSec_MB.so.1:submit_hash_burst_avx512_t2
 libIPSec_MB.so.1:submit_hash_burst_avx_t1
 libIPSec_MB.so.1:submit_hash_burst_avx_t2
 libIPSec_MB.so.1:submit_hash_burst_nocheck_avx2_t1
 libIPSec_MB.so.1:submit_hash_burst_nocheck_avx2_t2
+libIPSec_MB.so.1:submit_hash_burst_nocheck_avx2_t3
 libIPSec_MB.so.1:submit_hash_burst_nocheck_avx512_t1
 libIPSec_MB.so.1:submit_hash_burst_nocheck_avx512_t2
 libIPSec_MB.so.1:submit_hash_burst_nocheck_avx_t1
@@ -575,6 +589,7 @@ libIPSec_MB.so.1:submit_job_avx
 libIPSec_MB.so.1:submit_job_avx2
 libIPSec_MB.so.1:submit_job_avx2_t1
 libIPSec_MB.so.1:submit_job_avx2_t2
+libIPSec_MB.so.1:submit_job_avx2_t3
 libIPSec_MB.so.1:submit_job_avx512
 libIPSec_MB.so.1:submit_job_avx512_t1
 libIPSec_MB.so.1:submit_job_avx512_t2
@@ -584,6 +599,7 @@ libIPSec_MB.so.1:submit_job_nocheck_avx
 libIPSec_MB.so.1:submit_job_nocheck_avx2
 libIPSec_MB.so.1:submit_job_nocheck_avx2_t1
 libIPSec_MB.so.1:submit_job_nocheck_avx2_t2
+libIPSec_MB.so.1:submit_job_nocheck_avx2_t3
 libIPSec_MB.so.1:submit_job_nocheck_avx512
 libIPSec_MB.so.1:submit_job_nocheck_avx512_t1
 libIPSec_MB.so.1:submit_job_nocheck_avx512_t2
@@ -600,11 +616,13 @@ libIPSec_MB.so.1:submit_job_sse_t3
 libIPSec_MB.so.1:update_dec_chacha20_poly1305_avx
 libIPSec_MB.so.1:update_dec_chacha20_poly1305_avx2
 libIPSec_MB.so.1:update_dec_chacha20_poly1305_avx512
+libIPSec_MB.so.1:update_dec_chacha20_poly1305_fma_avx2
 libIPSec_MB.so.1:update_dec_chacha20_poly1305_fma_avx512
 libIPSec_MB.so.1:update_dec_chacha20_poly1305_sse
 libIPSec_MB.so.1:update_enc_chacha20_poly1305_avx
 libIPSec_MB.so.1:update_enc_chacha20_poly1305_avx2
 libIPSec_MB.so.1:update_enc_chacha20_poly1305_avx512
+libIPSec_MB.so.1:update_enc_chacha20_poly1305_fma_avx2
 libIPSec_MB.so.1:update_enc_chacha20_poly1305_fma_avx512
 libIPSec_MB.so.1:update_enc_chacha20_poly1305_sse
 libIPSec_MB.so.1:zuc_eea3_1_buffer_avx
